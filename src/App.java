@@ -7,9 +7,9 @@ public class App {
         Enemy enemy = new Enemy();
 
         player.setStatus("Kurumi", 100, 5);
-        player.setActionList();
+        player.setActionList("こうげき");
         enemy.setStatus("Slime", 100, 5);
-        enemy.setActionList();
+        enemy.setActionList("こうげき");
 
         msgGameTitle();
         msgEncounter(enemy.getName());
@@ -33,7 +33,10 @@ public class App {
             }
 
             //is Enemy die
-            isDie(enemy.getName(), enemy.getHp(), player.getName());
+            if(isDie(enemy.getName(), enemy.getHp(), player.getName())) {
+                sc.close();
+                return;
+            }
 
             //Enemy turn
             select = enemy.selectAction();
@@ -44,14 +47,19 @@ public class App {
             }
 
             //is Player die
-            isDie(player.getName(), player.getHp(), enemy.getName());
+            if(isDie(player.getName(), player.getHp(), enemy.getName())) {
+                sc.close();
+                return;
+            }
         }
     }
 
-    static void isDie(String loser, int hp, String winner) {
+    static boolean isDie(String loser, int hp, String winner) {
         if(hp == 0) {
             msgGameOver(loser, winner);
-            return;
+            return true;
+        } else {
+            return false;
         }
     }
 

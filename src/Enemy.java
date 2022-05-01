@@ -13,11 +13,10 @@ public class Enemy {
         this.name = name;
         this.hp = hp;
         this.power = power;
-        setActionList();
     }
 
-    public void setActionList() {
-        this.actionList.add("こうげき");
+    public void setActionList(String action) {
+        this.actionList.add(action);
     }
 
     public int selectAction() {

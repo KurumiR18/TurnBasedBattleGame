@@ -15,12 +15,11 @@ public class Player {
         this.name = name;
         this.hp = hp;
         this.power = power;
-        setActionList();
+        this.actionList.add("ゲームを閉じる");
     }
 
-    public void setActionList() {
-        this.actionList.add("ゲームを閉じる");
-        this.actionList.add("こうげき");
+    public void setActionList(String action) {
+        this.actionList.add(action);
     }
 
     public int selectAction() {
